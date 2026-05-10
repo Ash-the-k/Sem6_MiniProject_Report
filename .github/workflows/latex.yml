@@ -4,15 +4,21 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'main.tex'
+      - 'references.bib'
+      - 'images/**'
 
 jobs:
   build-latex:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # For git push
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # Fetches last 2 commits for diff
+          fetch-depth: 2
 
       - name: Check if main.pdf was changed
         id: check_pdf
@@ -24,13 +30,13 @@ jobs:
           fi
 
       - name: Compile LaTeX
-        if: steps.check_pdf.outputs.skip == 'false'
+        if: ${{ steps.check_pdf.outputs.skip == 'false' }}
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
 
       - name: Commit Updated PDF
-        if: steps.check_pdf.outputs.skip == 'false'
+        if: ${{ steps.check_pdf.outputs.skip == 'false' }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
