@@ -1,0 +1,66 @@
+# CASE STUDY TEMPLATE PACKAGE - COMPILE INSTRUCTIONS
+
+FOLDER STRUCTURE:
+CaseStudy_Template_Package/
+┣ main.tex
+┣ references.bib
+┣ COMPILE_INSTRUCTIONS.txt
+┗ images/
+┣ VTULogo.png
+┗ DSCELogo.png
+
+IMPORTANT:
+
+1. Put VTULogo.png and DSCELogo.png inside the images folder.
+2. Open main.tex in Overleaf OR compile locally using pdfLaTeX.
+3. Compile sequence:
+
+   * pdflatex main.tex
+   * bibtex main
+   * pdflatex main.tex
+   * pdflatex main.tex
+
+HOW TO EDIT:
+
+1. Change global variables at the top of main.tex
+
+   * Project Title
+   * Student Names
+   * USNs
+   * Guide Name
+   * Academic Year
+
+2. Replace chapter-wise placeholder content.
+
+3. Add references inside references.bib
+
+4. Use citations inside report:
+   \cite{keyname}
+
+ADDING IMAGES:
+
+1. Put images inside images/ folder
+
+2. Use:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/yourimage.png}
+\caption{Your Caption}
+\end{figure}
+
+COMMON ERRORS:
+
+* Missing logo = image path issue
+* Empty TOC = compile again
+* Citation [?] = bibtex not run yet
+* References not showing = compile sequence incomplete
+
+RECOMMENDED:
+
+* Use Overleaf for easier compilation
+* Keep one untouched backup template
+* Delete generated files before uploading to GitHub:
+  *.aux, *.bbl, *.blg, *.log, *.out, *.toc
+
+

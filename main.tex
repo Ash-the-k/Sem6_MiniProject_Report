@@ -1,0 +1,457 @@
+\documentclass[12pt,a4paper]{report}
+
+%% ================= PACKAGES =================
+\usepackage[margin=1in]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+
+%% ================= HYPERREF =================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+    pageanchor=true
+}
+
+%% ================= GLOBAL VARIABLES =================
+
+\newcommand{\ProjectTitle}{
+Explainable Multimodal Brain -- Heart Stress Detection and\\
+AI-Driven Intervention System using EEG and ECG Signals
+}
+
+\newcommand{\AcademicYear}{2025--2026}
+
+\newcommand{\DepartmentName}{Department of CSE (Data Science)}
+
+%% ================= STUDENT DETAILS =================
+
+\newcommand{\StudentOne}{Ashlesh}
+\newcommand{\USNOne}{1DS23CD012}
+
+\newcommand{\StudentTwo}{Sambhram S Naregal}
+\newcommand{\USNTwo}{1DS23CD045}
+
+\newcommand{\StudentThree}{Tushar D Kudachimath}
+\newcommand{\USNThree}{1DS23CD058}
+
+\newcommand{\StudentFour}{Vishal Krishna Bhat K}
+\newcommand{\USNFour}{1DS23CD063}
+
+%% ================= GUIDE DETAILS =================
+
+\newcommand{\GuideName}{Dr. Aarathi S}
+
+\newcommand{\GuideDesignation}{Associate Professor, Dept. of CSE (Data Science), DSCE}
+
+%% ================= PROJECT COORDINATOR =================
+
+\newcommand{\ProjectCoordinator}{Dr. Aarathi S}
+
+%% ================= PAGE SETTINGS =================
+
+\renewcommand{\arraystretch}{1.2}
+\setlength{\headheight}{16pt}
+
+%% ================= SPACING =================
+
+\onehalfspacing
+\renewcommand{\baselinestretch}{1.1}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\raggedbottom
+
+%% ================= TITLE PAGE SPACING =================
+
+\AtBeginEnvironment{titlepage}{\setstretch{1.0}}
+
+%% ================= HEADINGS =================
+
+\titleformat{\chapter}[display]
+{\centering\bfseries\fontsize{16}{20}\selectfont}
+{\chaptername\ \thechapter}
+{10pt}
+{\centering}
+
+\titleformat{\section}
+{\bfseries\fontsize{14}{16}\selectfont}
+{\thesection}
+{1em}
+{}
+
+%% ================= HEADER FOOTER =================
+
+\fancypagestyle{mainstyle}{
+  \fancyhf{}
+  \lhead{\small\textbf{\ProjectTitle}}
+  \rhead{\small\textbf{\AcademicYear}}
+  \lfoot{\small \DepartmentName}
+  \rfoot{\small Page \thepage}
+
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \lhead{\small\textbf{\ProjectTitle}}
+  \rhead{\small\textbf{\AcademicYear}}
+  \lfoot{\small \DepartmentName}
+  \rfoot{\small Page \thepage}
+
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+%% =====================================================
+%% DOCUMENT
+%% =====================================================
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+
+\pagestyle{empty}
+
+%% =====================================================
+%% TITLE PAGE
+%% =====================================================
+
+\begin{titlepage}
+
+\centering
+
+\vspace*{0.2cm}
+
+{\Large \bfseries Visvesvaraya Technological University \\[0.2em]}
+
+{\large \bfseries Belgaum, Karnataka- 590014 \\[0.6em]}
+
+\includegraphics[width=2.8cm]{images/VTULogo.png}
+
+\vspace{0.5em}
+
+{\large Third Year \\[0.15em]}
+
+{\large \bfseries A Mini-Project Report \\[0.3em]}
+
+{\large On \\[0.3em]}
+
+{\large \bfseries ``\ProjectTitle'' \\[0.8em]}
+
+{\normalsize Submitted in the partial fulfilment of the requirements for the award of the Degree of \\[0.45em]}
+
+{\large \bfseries BACHELOR OF ENGINEERING \\[0.15em]}
+
+{\normalsize In \\[0.15em]}
+
+{\large \bfseries COMPUTER SCIENCE AND ENGINEERING \\[0.15em]}
+
+{\large \bfseries (DATA SCIENCE) \\[0.8em]}
+
+{\normalsize Submitted by \\[0.35em]}
+
+{\normalsize \bfseries
+\StudentOne\ (\USNOne) \\
+\StudentTwo\ (\USNTwo) \\
+\StudentThree\ (\USNThree) \\
+\StudentFour\ (\USNFour)
+\\[0.8em]
+}
+
+{\normalsize Under the Guidance of \\[0.3em]}
+
+{\normalsize \bfseries \GuideName \\[0.15em]}
+
+{\small \GuideDesignation \\[0.8em]}
+
+\includegraphics[width=2.2cm]{images/DSCELogo.png}
+
+\vspace{0.5em}
+
+{\normalsize \AcademicYear \\[0.25em]}
+
+{\normalsize \bfseries DEPARTMENT OF CSE (DATA SCIENCE) \\[0.15em]}
+
+{\normalsize \bfseries DAYANANDA SAGAR COLLEGE OF ENGINEERING \\[0.3em]}
+
+{\small SHAVIGE MALLESHWARA HILLS, KUMARASWAMY LAYOUT, BANGALORE-78}
+
+\vfill
+
+\end{titlepage}
+
+%% =====================================================
+%% CERTIFICATE PAGE
+%% =====================================================
+
+\clearpage
+
+\begin{center}
+
+{\Large \bfseries DAYANANDA SAGAR COLLEGE OF ENGINEERING \\[0.3em]}
+
+{\normalsize Shavige Malleshwara Hills, Kumaraswamy Layout \\ Bangalore-560078 \\[0.7em]}
+
+{\Large \bfseries Department of CSE (DATA SCIENCE) \\[0.5em]}
+
+\includegraphics[width=2.2cm]{images/DSCELogo.png} \\[0.8em]
+
+{\large \AcademicYear \\[0.9em]}
+
+{\LARGE \bfseries Certificate \\[1.2em]}
+
+\begin{spacing}{1.25}
+
+\justify
+
+\parbox{0.95\textwidth}{
+
+This is to certify that the Mini Project Work entitled 
+\textbf{``Explainable Multimodal Brain -- Heart Stress Detection and AI-Driven Intervention System using EEG and ECG Signals''}
+is a bonafide work carried out by 
+\textbf{
+\StudentOne\ (\USNOne), 
+\StudentTwo\ (\USNTwo), 
+\StudentThree\ (\USNThree) and 
+\StudentFour\ (\USNFour)
+}, 
+in partial fulfilment for the VI semester of Bachelor of Engineering in 
+CSE (Data Science) of the Visvesvaraya Technological University, Belgaum 
+during the year \AcademicYear. 
+The Project report has been approved as it satisfies the academic requirements prescribed for the Bachelor of Engineering degree.
+}
+
+\end{spacing}
+
+\vspace{2.5cm}
+
+\begin{tabularx}{\textwidth}{
+>{\centering\arraybackslash}X
+>{\centering\arraybackslash}X
+>{\centering\arraybackslash}X
+}
+
+Signature of Project Coordinator &
+Signature of Guide &
+Signature of HOD
+\\[0.2cm]
+
+[\ProjectCoordinator] &
+[\GuideName] &
+[Dr. Harish H. Kenchannavar]
+
+\end{tabularx}
+
+\vspace{1cm}
+
+\begin{tabularx}{\textwidth}{p{8cm} X}
+
+\hspace{1cm}\textbf{Name of the Examiners} &
+\textbf{Signature with Date}
+\\[0.4cm]
+
+1. & \\[0.9cm]
+
+2. &
+
+\end{tabularx}
+
+\end{center}
+
+%% =====================================================
+%% ACKNOWLEDGEMENT
+%% =====================================================
+
+\clearpage
+
+\chapter*{ACKNOWLEDGEMENT}
+
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENT}
+
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.8em}
+\setstretch{1.5}
+
+First and foremost, we thank the Almighty for being our light and for showering his gracious blessings throughout this project.
+
+We express our gratitude to our beloved Principal, Dr. B.G. Prasad, for providing us with all facilities.
+
+With a grateful heart, our sincere thanks to our Head of the Department, Dr. Harish H. Kenchannavar, Department of Computer Science Engineering (Data Science), for the motivation and support to complete the project work.
+
+We extend our sincere thanks to our project guide, Prof./Dr. \GuideName, \GuideDesignation, and to our project coordinator Prof./Dr. \ProjectCoordinator, for the valuable guidance and suggestions in all aspects that aided us in ameliorating our skills.
+
+We are thankful to all the Teaching and Non-Teaching Staff of the Department of Computer Science Engineering (Data Science) and to all those who have directly and indirectly extended their help to us in completing this project work successfully.
+
+We extend our sincere thanks to our family members and our beloved friends, who had been strongly supporting us in all our endeavors.
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\onehalfspacing
+
+%% =====================================================
+%% TABLE OF CONTENTS
+%% =====================================================
+
+\clearpage
+
+\begingroup
+
+\setstretch{1.0}
+\setlength{\parskip}{0pt}
+
+\pagenumbering{roman}
+
+\renewcommand{\contentsname}{CONTENTS}
+
+\tableofcontents
+
+\endgroup
+
+\clearpage
+
+\hypersetup{pageanchor=true}
+
+%% =====================================================
+%% MAIN CONTENT
+%% =====================================================
+
+\pagenumbering{arabic}
+
+\pagestyle{mainstyle}
+
+%% =====================================================
+\chapter{Introduction}
+
+Write the complete introduction of the project here.
+
+%% =====================================================
+\chapter{Literature Survey}
+
+Discuss existing systems and related research.
+
+%% =====================================================
+\chapter{Research Gap Identified}
+
+Explain the limitations in existing systems.
+
+%% =====================================================
+\chapter{Architectures}
+
+\section{High Level Architecture}
+
+Insert high level architecture diagram here.
+
+\section{Detailed Architecture}
+
+Insert detailed architecture diagram here.
+
+
+\section{UML Diagrams}
+
+\begin{itemize}
+    \item Use Case Diagram
+    \item Class Diagram
+    \item Sequence Diagram
+    \item Activity Diagram
+\end{itemize}
+
+%% =====================================================
+\chapter{Project Objectives}
+
+\begin{itemize}
+    \item Objective 1
+    \item Objective 2
+    \item Objective 3
+    \item Objective 4
+\end{itemize}
+
+%% =====================================================
+\chapter{Timeline using Gantt}
+
+Insert Gantt chart here.
+
+\vspace{8cm}
+
+%% =====================================================
+\chapter{Hardware and Software Requirements}
+
+\section{Hardware Requirements}
+
+\begin{itemize}
+    \item Processor
+    \item RAM
+    \item Storage
+\end{itemize}
+
+\section{Software Requirements}
+
+\begin{itemize}
+    \item Operating System
+    \item Programming Language
+    \item Frameworks
+    \item Database
+\end{itemize}
+
+%% =====================================================
+\chapter{Sample Code}
+
+\begin{verbatim}
+Example code here
+\end{verbatim}
+
+%% =====================================================
+\chapter{Project Demo Screenshots}
+
+Insert screenshots here.
+
+\vspace{10cm}
+
+%% =====================================================
+\chapter{AI Tools Application}
+
+Explain AI tools used in the project.
+
+%% =====================================================
+\chapter{SGDs Met by Project with Proper Justification}
+
+Mention SDGs achieved by the project.
+
+%% =====================================================
+\chapter{Purpose of the Project}
+
+Explain target audience and future scope.
+
+%% =====================================================
+\chapter{Research Paper Draft}
+
+Attach research paper draft and Turnitin report.
+Artificial Intelligence is transforming healthcare systems rapidly \cite{r1, r2}.
+
+%% =====================================================
+
+\renewcommand{\bibname}{References and Bibliography}
+
+\addcontentsline{toc}{chapter}{References and Bibliography}
+
+\bibliographystyle{plain}
+
+\bibliography{references}
+
+%% =====================================================
+
+\end{document}
