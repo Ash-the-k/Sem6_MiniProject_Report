@@ -469,14 +469,72 @@ E = mc^2
 Write the complete introduction of the project here.
 
 %% =====================================================
+\begingroup
+
+\setlength{\parindent}{1.5em}   % starting space for each paragraph
+\setlength{\parskip}{6pt}        % spacing between paragraphs
+
 \chapter{Literature Survey}
 
-Discuss existing systems and related research.
+\indent Majid et al.~\cite{b1} suggested a technique to classify chronic mental stress types using wearable EEG, GSR and PPG data collected from 40 people. Using a wrapper-based LFF method, the study found that theta EEG was the most important feature for stress detection. Leave-one-out cross-validation was used for evaluation, and the MLP classifier was selected over SVM and Naive Bayes due to its higher accuracy of about 95\%. This work shows that wearable physiological signals can be effectively used for stress classification. However, the study depends on a limited number of participants, which may affect generalization in real-world scenarios.
 
+The CLARE dataset~\cite{b2} consists of multimodal data collected from 24 participants while performing the MATBII task. The dataset includes ECG, EDA, EEG and eye-tracking signals collected simultaneously for each participant. The participants provided subjective cognitive-load ratings on a Likert scale every 10 seconds, which were used as labels. The authors applied both machine learning and deep learning algorithms for classification. The combination of ECG, EDA and EEG signals achieved the best performance with an accuracy of about 85.6\%. This study highlights the importance of multimodal physiological signals for cognitive-load and stress-related analysis.
+
+The early prediction of cognitive load and psychological stress was carried out in~\cite{b3} using ECG and EEG signals through the MIST technique. The experiment was conducted on 22 male participants. Features such as relative power, coherence, phase lag and amplitude asymmetry were extracted from 21 ECG and 40 EEG channels. For feature selection and dimensionality reduction, paired t-test and PCA were used. The selected features were classified using an SVM classifier with radial basis function kernel, achieving a success rate of 79.54\%. This study demonstrates that ECG and EEG signals can be useful for early stress prediction, but the limited participant group affects the robustness of the model.
+
+Catrambone et al.~\cite{b4} studied the relationship between brain--heart interaction under mental and physical stress. Mental arithmetic test and cold pressor test were used as stress stimuli. EEG and ECG data were recorded from healthy participants. Using the SDG framework and Fuzzy Entropy, the study found that brain--heart interaction complexity varies depending on the direction and type of stress stimulus. Mental stress promoted bottom-up complexity, whereas physical stress reduced top-down complexity and increased bottom-up complexity. The study also showed that sympathovagal LF power regulates the effect of stress on brain--heart interaction complexity.
+
+Stress is a major health issue and is directly associated with obesity, hypertension, diabetes and other metabolic disorders~\cite{b5}. In the present scenario, stress affects both human health and the economic system. The human body responds to stress by activating the stress response system, resulting in increased heart rate and sweating. These physiological changes can be measured using electrodermal activity, heart rate and other biosignals. Modern wearable devices such as smartwatches and smart rings can automatically measure heart rate, EDA and related physiological signals. These devices make it possible to monitor stress levels without laboratory equipment. This motivates the development of real-time, wearable and AI-based stress detection systems.
+
+Nnadi et al.~\cite{b6} emphasized the use of machine learning techniques with biosignals such as heart rate and electrodermal activity for stress detection. Supervised learning models such as Logistic Regression, KNN, Random Forest, SVM, XGBoost and Neural Networks were used for stress classification. Random sampling and cross-validation methods were used during training and evaluation. Although these models provide accurate stress detection, many of them behave like black-box systems. Therefore, Explainable AI techniques such as SHAP, LIME and attention-based methods are required to improve prediction transparency and make the results more understandable in practical healthcare applications.
+
+Explainable AI methods have also been used for detecting heart disorders through automated ECG signal analysis~\cite{b7}. Deep learning models, including convolutional neural network architectures, were used to extract spatio-temporal patterns from ECG data. These models achieved high diagnostic accuracy across different datasets. Different explainability methods were applied to identify important waveform segments that influenced the model predictions. This helped in addressing the black-box nature of deep learning models. The system provided accurate predictions along with interpretable decision-making, making it suitable for trustworthy clinical support.
+
+In~\cite{b8}, an Explainable Artificial Intelligence framework was used to analyze Heart Rate Variability obtained from ECG signals for cardiovascular assessment. Machine learning models were used to study complex temporal patterns in HRV data and understand the relationship between cardiac health and autonomic nervous system function. The study applied explainability techniques to identify influential physiological features affecting model predictions. This improved the transparency and trustworthiness of the model. The work supports the development of continuous cardiac health monitoring systems using interpretable AI methods.
+
+Lyberatos et al.~\cite{b9} stated that the increasing demand for transparency and trust in medical AI systems has made XAI essential for EEG analysis. EEG signals are noisy, non-stationary and highly complex, which makes interpretation difficult using traditional analytical methods. Deep learning models can extract meaningful EEG patterns, but their black-box nature limits clinical acceptance. The paper reviewed XAI methods for EEG analysis and categorized them based on model dependency, explanatory approach and scope. Techniques such as LIME, SHAP, Grad-CAM, DeepLIFT and LRP were discussed for feature-level and visual explanations. The authors observed that most existing approaches rely on post-hoc explanations, which may lack consistency and reliability. The study also identified challenges such as inter-subject variability, low signal-to-noise ratio, lack of standard evaluation frameworks and insufficient neuroscientific grounding. It suggested that future research should focus on physiologically meaningful XAI methods, domain expert validation and integration of interpretability into model design.
+
+According to Upadhya et al.~\cite{b10}, stress identification in professional settings is difficult because traditional self-reporting methods are subjective and often inaccurate. Physiological signals and behavioral cues are more reliable because they are less manipulable. The proposed approach used a multimodal framework that integrates physiological data and facial emotions for stress classification. Machine learning and deep learning models such as CNN, VGG16, Custom CNN, SVM and LSTM were used to capture visual and temporal patterns. The study found that LSTM performed better for physiological data, while VGG16 achieved higher accuracy for facial expression interpretation. The integration of multiple modalities improved the robustness and reliability of the stress detection system. XAI techniques such as SHAP, LIME and Permutation Importance were used to improve transparency and identify feature contributions. The study reported improved performance, with VGG16 achieving about 87\% accuracy.
+
+Jaber et al.~\cite{b11} focused on the explainability issue in AI-based stress prediction systems. Although machine learning models can detect stress using physiological signals, they often operate as black boxes, making it difficult for healthcare professionals to trust their results. The authors emphasized that transparency is important in medical applications because incorrect predictions can have serious consequences. The proposed explainable AI architecture was inspired by medical blood test reports. Wearable sensors were used to collect physiological inputs such as temperature, respiration, electrodermal activity, ECG and EMG. Features extracted from these signals were used by a machine learning model to predict stress. SHAP was used to calculate the contribution of each feature to the final prediction. The system generated an explainable report containing stress likelihood, feature values, reference intervals and the impact of each physiological indicator. A balanced Random Forest classifier achieved an average F1-score of 0.78 through cross-validation. Validation by psychiatrists showed that the explanations improved understanding and confidence in AI-based stress prediction.
+
+Enkhbayar et al.~\cite{b12} studied depression detection using polysomnographic phenotypic data. Depression is a major global mental health problem that affects quality of life and increases mortality risk. Traditional diagnostic methods such as self-reported questionnaires are subjective and may not always provide accurate results. The proposed method used PSG-based physiological features, clinical information and questionnaire-based mental health markers. The dataset was obtained from the BESTAIR project and included 153 individuals. Features such as blood pressure, sleep efficiency, apnea-hypopnea index and mental health scores were analyzed. Machine learning models such as Random Forest, XGBoost, LightGBM and CatBoost were used for prediction. SHAP was applied to improve interpretability and identify important factors such as anxiety disorders, sleep efficiency and mental health ratings. The results showed that ensemble models performed well, with an F1-score of about 85\%.
+
+From the reviewed studies, it is observed that physiological signals such as EEG, ECG, EDA, GSR, PPG and HRV play an important role in stress, cognitive-load, depression and cardiovascular health analysis. Machine learning and deep learning models provide promising results for classification and prediction tasks. However, many models suffer from black-box behavior, limited interpretability and poor clinical trust. Explainable AI methods such as SHAP, LIME, Grad-CAM, DeepLIFT, LRP and Permutation Importance help improve transparency by identifying the important features or signal regions responsible for predictions. Existing works also show that multimodal systems using both brain and heart signals can improve robustness compared to single-modality systems. Therefore, there is a need for an explainable multimodal brain--heart stress detection system that combines EEG and ECG signals, provides accurate stress prediction and generates interpretable explanations for medical decision support.
+
+\endgroup
+
+%% =====================================================
 %% =====================================================
 \chapter{Research Gap Identified}
 
-Explain the limitations in existing systems.
+From the literature survey, it is observed that several studies have explored stress detection, cognitive load assessment, heart disorder detection and depression prediction using physiological signals such as EEG, ECG, EDA, GSR, PPG and HRV. Although these approaches have produced promising results, the following research gaps are identified:
+
+\begin{itemize}
+    \item Most existing studies are based on small datasets with limited participants, such as 22, 24 or 40 subjects. This reduces the generalization ability of the model when applied to a larger and more diverse population.
+
+    \item Several studies are conducted in controlled laboratory environments using predefined stress-inducing tasks such as mental arithmetic tests, cold pressor tests or cognitive workload tasks. These conditions may not fully represent real-world stress scenarios.
+
+    \item Some studies focus only on individual physiological signals such as EEG, ECG, EDA, GSR, PPG or HRV. Limited work has been done on effective multimodal fusion of brain and heart signals, especially using EEG and ECG together.
+
+    \item Existing systems often achieve good classification accuracy, but many machine learning and deep learning models behave like black-box systems. This makes it difficult for doctors, users and researchers to understand the reason behind a stress prediction.
+
+    \item Explainable AI techniques such as SHAP, LIME, Grad-CAM, DeepLIFT, LRP and Permutation Importance are used in some works, but most of them are post-hoc methods. These explanations may not always be consistent, reliable or physiologically meaningful.
+
+    \item There is limited clinical or expert validation of the explanations generated by XAI methods. In healthcare applications, explanations should be validated by domain experts to improve trustworthiness.
+
+    \item Many existing works focus mainly on offline classification using pre-collected datasets. Real-time stress detection using continuous EEG and ECG signal processing is still limited.
+
+    \item Stress response varies from person to person, but many systems use generalized models. There is a need for personalized stress detection models that can adapt to individual physiological patterns.
+
+    \item Most systems only detect or classify stress levels. They do not provide AI-driven intervention support such as breathing exercises, relaxation recommendations, alerts or medical assistance suggestions.
+
+    \item Different studies use different datasets, preprocessing methods, feature extraction techniques, classifiers and evaluation metrics. This makes it difficult to compare the performance of different stress detection systems fairly.
+
+    \item Existing systems lack a complete framework that combines multimodal physiological signal analysis, explainable AI, real-time monitoring and intervention support in a single system.
+
+    \item Therefore, there is a need to develop an Explainable Multimodal Brain--Heart Stress Detection and AI-Driven Intervention System using EEG and ECG signals. Such a system can improve prediction accuracy, provide interpretable explanations and support real-time stress monitoring with suitable intervention recommendations.
+\end{itemize}
 
 %% =====================================================
 \chapter{Architectures}
@@ -577,7 +635,7 @@ Artificial Intelligence is transforming healthcare systems rapidly \cite{r1, r2}
 
 \addcontentsline{toc}{chapter}{References and Bibliography}
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 
 \bibliography{references}
 
