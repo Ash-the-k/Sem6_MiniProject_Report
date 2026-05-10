@@ -1,39 +1,38 @@
 name: Build and Publish PDF
 
 on:
-push:
-branches:
-- main
+  push:
+    branches:
+      - main
 
 jobs:
-build-latex:
-runs-on: ubuntu-latest
+  build-latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-steps:
-  - name: Checkout Repository
-    uses: actions/checkout@v4
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
 
-  - name: Compile LaTeX
-    uses: xu-cheng/latex-action@v3
-    with:
-      root_file: main.tex
-
-  - name: Publish PDF to compiled-pdf branch
-    uses: peaceiris/actions-gh-pages@v4
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      publish_branch: compiled-pdf
-      publish_dir: .
-      keep_files: false
-      force_orphan: true
-      enable_jekyll: false
-      exclude_assets: |
-        *.tex
-        *.bib
-        *.aux
-        *.log
-        *.toc
-        *.out
-        *.fls
-        *.fdb_latexmk
-        images/
+      - name: Publish PDF to compiled-pdf branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: compiled-pdf
+          publish_dir: .
+          keep_files: false
+          force_orphan: true
+          enable_jekyll: false
+          exclude_assets: |
+            *.tex
+            *.bib
+            *.aux
+            *.log
+            *.toc
+            *.out
+            *.fls
+            *.fdb_latexmk
+            images/
