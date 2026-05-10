@@ -9,7 +9,6 @@ jobs:
 build-latex:
 runs-on: ubuntu-latest
 
-```
 steps:
   - name: Checkout Repository
     uses: actions/checkout@v4
@@ -38,4 +37,3 @@ steps:
         *.fls
         *.fdb_latexmk
         images/
-```
