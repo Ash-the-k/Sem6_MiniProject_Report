@@ -1,4 +1,4 @@
-name: Build LaTeX PDF
+name: Build and Deploy LaTeX PDF
 
 on:
   push:
@@ -9,8 +9,13 @@ on:
       - 'references.bib'
       - 'images/**'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-latex:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -21,8 +26,39 @@ jobs:
         with:
           root_file: main.tex
 
-      - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v4
+      - name: Prepare GitHub Pages Files
+        run: |
+          mkdir public
+          cp main.pdf public/
+          cat > public/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <meta http-equiv="refresh" content="0; url=main.pdf">
+            <title>PDF Redirect</title>
+          </head>
+          <body>
+            <p>Redirecting to <a href="main.pdf">main.pdf</a>...</p>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: main-pdf
-          path: main.pdf
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
