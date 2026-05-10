@@ -1,4 +1,4 @@
-name: Build and Publish PDF
+name: Build LaTeX PDF
 
 on:
   push:
@@ -11,28 +11,33 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Fetches last 2 commits for diff
+
+      - name: Check if main.pdf was changed
+        id: check_pdf
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -q "^main.pdf$"; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Compile LaTeX
+        if: steps.check_pdf.outputs.skip == 'false'
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
 
-      - name: Publish PDF to compiled-pdf branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: compiled-pdf
-          publish_dir: .
-          keep_files: false
-          force_orphan: true
-          enable_jekyll: false
-          exclude_assets: |
-            *.tex
-            *.bib
-            *.aux
-            *.log
-            *.toc
-            *.out
-            *.fls
-            *.fdb_latexmk
-            images/
+      - name: Commit Updated PDF
+        if: steps.check_pdf.outputs.skip == 'false'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add main.pdf
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update main.pdf [skip ci]"
+            git push
+          fi
