@@ -12,38 +12,17 @@ on:
 jobs:
   build-latex:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # For git push
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Check if main.pdf was changed
-        id: check_pdf
-        run: |
-          if git diff --name-only HEAD~1 HEAD | grep -q "^main.pdf$"; then
-            echo "skip=true" >> $GITHUB_OUTPUT
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
-          fi
 
       - name: Compile LaTeX
-        if: ${{ steps.check_pdf.outputs.skip == 'false' }}
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
 
-      - name: Commit Updated PDF
-        if: ${{ steps.check_pdf.outputs.skip == 'false' }}
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add main.pdf
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Auto-update main.pdf [skip ci]"
-            git push
-          fi
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-pdf
+          path: main.pdf
