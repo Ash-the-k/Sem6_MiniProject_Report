@@ -470,9 +470,21 @@ E = mc^2
 
 %% =====================================================
 \chapter{Introduction}
+\chapter{Introduction}
 
-Write the complete introduction of the project here.
+Stress has become one of the most critical challenges affecting modern society, influencing both mental and physical well-being. Continuous exposure to academic pressure, professional workload, lifestyle imbalance and environmental factors leads to psychological strain that may result in anxiety, cardiovascular disorders, reduced productivity and cognitive fatigue. Early identification and monitoring of stress conditions are therefore essential for improving overall health and quality of life.
 
+Traditional stress assessment techniques mainly rely on self-reported questionnaires, clinical observations or single physiological measurements. Such approaches are often subjective, discontinuous and unable to capture real-time variations in human stress response. Recent advancements in wearable healthcare technologies and Artificial Intelligence have enabled continuous monitoring of physiological signals that objectively reflect human emotional and cognitive states.
+
+Physiological biosignals such as Electroencephalogram (EEG) and Electrocardiogram (ECG) provide valuable information regarding brain activity and cardiac response during stressful situations. The interaction between brain dynamics and heart rate variability plays an important role in understanding stress behaviour. However, many existing systems analyze only a single modality, which limits prediction accuracy and robustness.
+
+To address these limitations, this project proposes an explainable multimodal brain–heart stress detection and AI-driven intervention system that integrates EEG and ECG signals for comprehensive stress analysis. The proposed framework employs a transformer-based multimodal learning architecture capable of learning complex relationships between neural and cardiovascular responses. Multimodal fusion improves stress classification performance by capturing complementary physiological information from both brain and heart signals.
+
+Another major challenge in healthcare Artificial Intelligence systems is the lack of interpretability. Many machine learning and deep learning models operate as black-box systems, making their predictions difficult to understand and trust in clinical environments. To overcome this issue, the proposed system incorporates explainable Artificial Intelligence techniques such as attention mechanisms, SHAP and LIME to highlight important physiological features contributing to stress prediction. This improves transparency, reliability and user confidence.
+
+In addition to stress detection, the system integrates a retrieval-augmented generation framework combined with large language models to generate personalized stress management recommendations. Instead of only classifying stress levels, the proposed framework acts as an intelligent decision-support system capable of suggesting relaxation strategies, lifestyle adjustments and intervention guidance based on detected stress patterns.
+
+The overall objective of this work is to develop an intelligent, interpretable and scalable digital healthcare framework that enables continuous stress monitoring, explainable prediction and personalized intervention support. The proposed system contributes to the growing fields of healthcare Artificial Intelligence, explainable AI, biomedical signal processing and digital mental health monitoring.
 %% =====================================================
 \begingroup
 
@@ -566,18 +578,32 @@ Insert detailed architecture diagram here.
 \chapter{Project Objectives}
 
 \begin{itemize}
-    \item Objective 1
-    \item Objective 2
-    \item Objective 3
-    \item Objective 4
+\item To develop an intelligent system for automatic detection of stress using physiological biosignals.
+
+\item To analyze multimodal data by integrating Electroencephalogram (EEG) and Electrocardiogram (ECG) signals for comprehensive brain–heart stress assessment.
+
+\item To design and implement a transformer-based multimodal learning model capable of capturing complex relationships between physiological signals.
+
+\item To improve stress prediction accuracy through multimodal feature fusion and deep learning techniques.
+
+\item To incorporate explainable Artificial Intelligence methods to provide interpretable and transparent stress predictions.
+
+\item To generate personalized stress management recommendations using a retrieval-augmented generation framework.
+
+\item To enable continuous monitoring and intelligent decision support for digital healthcare and mental wellness applications.
+
+\item To build a scalable framework suitable for future wearable healthcare integration and real-time deployment.
+
 \end{itemize}
 
 %% =====================================================
-\chapter{Timeline using Gantt}
-
-Insert Gantt chart here.
-
-\vspace{8cm}
+\chapter{Timeline using Gantt }
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Sem6_MiniProject_Report/images/Gantt_Chart.png}
+\caption{Project Gantt Chart}
+\label{fig:gantt_chart}
+\end{figure}
 
 %% =====================================================
 \chapter{Hardware and Software Requirements}
@@ -585,18 +611,28 @@ Insert Gantt chart here.
 \section{Hardware Requirements}
 
 \begin{itemize}
-    \item Processor
-    \item RAM
-    \item Storage
+\item Personal Computer or Laptop (minimum 8 GB RAM)
+\item Intel i5 processor or higher
+\item Minimum 256 GB storage
+\item EEG and ECG signal acquisition devices or standard datasets
+\item Internet connectivity
+\item Optional wearable device support for biosignal monitoring
+
 \end{itemize}
 
 \section{Software Requirements}
 
 \begin{itemize}
-    \item Operating System
-    \item Programming Language
-    \item Frameworks
-    \item Database
+\item Operating System: Windows / Linux / macOS
+\item Programming Language: Python
+\item Development Tools: Jupyter Notebook or Visual Studio Code
+\item Deep Learning Frameworks: TensorFlow or PyTorch
+\item Libraries: NumPy, Pandas, Scikit-learn
+\item Visualization Tools: Matplotlib, Seaborn
+\item Explainable AI Tools: SHAP, LIME
+\item Database: ChromaDB or equivalent storage
+\item AI Framework: Retrieval-Augmented Generation with LLM APIs
+
 \end{itemize}
 
 %% =====================================================
