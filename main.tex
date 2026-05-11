@@ -557,21 +557,91 @@ From the literature survey, it is observed that several studies have explored st
 
 \section{High Level Architecture}
 
-Insert high level architecture diagram here.
+The high level architecture of the proposed system, shown in Figure~\ref{fig:high_level_architecture}, illustrates the overall workflow of stress detection and personalized intervention generation using EEG and ECG physiological signals.
 
-\section{Detailed Architecture}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/Diagrams/High Level Arch Vertical.png}
+    \caption{High Level Architecture of the Proposed System}
+    \label{fig:high_level_architecture}
+\end{figure}
 
-Insert detailed architecture diagram here.
+\section{Use Case Diagram}
 
+The use case diagram shown in Figure~\ref{fig:use_case_diagram} represents the interaction between the user and the proposed stress management system.
 
-\section{UML Diagrams}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Diagrams/Use Case Diagram.png}
+    \caption{Use Case Diagram of the Proposed System}
+    \label{fig:use_case_diagram}
+\end{figure}
 
-\begin{itemize}
-    \item Use Case Diagram
-    \item Class Diagram
-    \item Sequence Diagram
-    \item Activity Diagram
-\end{itemize}
+\section{Data Flow Diagram}
+
+\subsection{Level 0 DFD}
+
+The Level 0 Data Flow Diagram illustrated in Figure~\ref{fig:dfd0} represents the overall flow of data between the user and the system.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Diagrams/DFD0.png}
+    \caption{Level 0 Data Flow Diagram}
+    \label{fig:dfd0}
+\end{figure}
+
+\subsection{Level 1 DFD}
+
+The Level 1 Data Flow Diagram shown in Figure~\ref{fig:dfd1_part1} and Figure~\ref{fig:dfd1_part2} illustrates the internal data processing stages involved in stress prediction and intervention generation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Diagrams/DFD1(1).png}
+    \caption{Level 1 Data Flow Diagram -- Part 1}
+    \label{fig:dfd1_part1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Diagrams/DFD1(2).png}
+    \caption{Level 1 Data Flow Diagram -- Part 2}
+    \label{fig:dfd1_part2}
+\end{figure}
+
+\section{Detailed System Architecture}
+
+\subsection{Input Processing and Explainability Layer}
+
+The architecture shown in Figure~\ref{fig:detailed_arch_1} illustrates physiological signal acquisition, preprocessing, feature extraction, multimodal stress classification, and explainability analysis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Diagrams/DetailedArch/stress_architecture-Page 1 – Input to XAI.png}
+    \caption{Detailed Architecture -- Input Processing and Explainability Layer}
+    \label{fig:detailed_arch_1}
+\end{figure}
+
+\subsection{Controller and Context Construction Layer}
+
+Figure~\ref{fig:detailed_arch_2} demonstrates context construction, orchestration, and stress reasoning mechanisms used within the proposed framework.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Diagrams/DetailedArch/stress_architecture-Page 2 – Controller & Context Builder.png}
+    \caption{Detailed Architecture -- Controller and Context Construction Layer}
+    \label{fig:detailed_arch_2}
+\end{figure}
+
+\subsection{RAG and Personalized Planning Layer}
+
+The architecture represented in Figure~\ref{fig:detailed_arch_3} illustrates retrieval-augmented generation, intervention retrieval, and personalized stress management plan generation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Diagrams/DetailedArch/stress_architecture-Page 3 – RAG, Planner & Output.png}
+    \caption{Detailed Architecture -- RAG and Personalized Planning Layer}
+    \label{fig:detailed_arch_3}
+\end{figure}
 
 %% =====================================================
 \chapter{Project Objectives}
@@ -599,7 +669,7 @@ Insert detailed architecture diagram here.
 \chapter{Timeline using Gantt }
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{Sem6_MiniProject_Report/images/Gantt_Chart.png}
+\includegraphics[width=\textwidth]{./images/Gantt_Chart.png}
 \caption{Project Gantt Chart}
 \label{fig:gantt_chart}
 \end{figure}
@@ -643,28 +713,33 @@ Example code here
 
 %% =====================================================
 \chapter{Project Demo Screenshots}
+
+Figure~\ref{fig:dashboard} shows the dashboard interface of the proposed stress management system displaying stress prediction results and physiological analysis outputs.
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{Sem6_MiniProject_Report/images/Screenshots/dashboard.jpeg}
-\caption{Dashboard}
+\includegraphics[width=\textwidth]{./images/Screenshots/dashboard.jpeg}
+\caption{Dashboard Interface of the Proposed System}
 \label{fig:dashboard}
 \end{figure}
 
+Figure~\ref{fig:feature_importance} illustrates the important physiological features contributing to stress prediction through the explainability module.
+
+Figure~\ref{fig:stress_management} presents the personalized stress management recommendations generated by the proposed system.
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{Sem6_MiniProject_Report/images/Screenshots/feature_importance.jpeg}
-\caption{Important features causing stress}
-\label{fig:Features Causing stress}
+\includegraphics[width=0.9\textwidth]{./images/Screenshots/feature_importance.jpeg}
+\caption{Feature Importance Visualization}
+\label{fig:feature_importance}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{Sem6_MiniProject_Report/images/Screenshots/suggestions.jpeg}
-\caption{Stress Management Techniques}
-\label{fig:Stress Management Techniques}
+\includegraphics[width=\textwidth]{./images/Screenshots/suggestions.jpeg}
+\caption{Stress Management Recommendations}
+\label{fig:stress_management}
 \end{figure}
-
-\vspace{10cm}
 
 %% =====================================================
 \chapter{AI Tools Application}
@@ -769,32 +844,9 @@ The work also has scope for future research publication and potential developmen
 
 Stress is a prevalent issue worldwide which impacts one’s psychological and physical health. Recent developments have been made in the detection of stress through wearables which measure physiological signals such as Electroencephalography (EEG), Electrocardiogram (ECG), Electrodermal Activity (EDA), Galvanic Skin Response (GSR), and Photoplethysmography (PPG). Machine learning models utilized for prediction include Logistic Regression, KNN, Random Forest, Support Vector Machines (SVM), XGBoost, and Neural Networks. In order to provide an explanation and make the predictions more understandable, Explainable Artificial Intelligence (XAI) methods like SHAP, LIME, and attention mechanisms are utilized.
 
-\section{Key Areas Covered}
+\section{Research Paper and Plagiarism Report}
 
-The research paper includes the following major areas:
-
-\begin{itemize}
-    \item Literature survey on stress detection and Explainable AI
-    \item Multimodal EEG and ECG signal analysis
-    \item Transformer-based stress classification
-    \item Explainability techniques for physiological interpretation
-    \item Retrieval-Augmented Generation (RAG) integration
-    \item Personalized stress management planning
-    \item Result analysis and system discussion
-\end{itemize}
-
-\section{Research Contribution}
-
-The proposed work contributes towards research in:
-
-\begin{itemize}
-    \item Healthcare Artificial Intelligence
-    \item Explainable AI (XAI)
-    \item Biomedical Signal Processing
-    \item Mental Health Monitoring Systems
-\end{itemize}
-
-The work also demonstrates the integration of multimodal physiological analysis with explainable and evidence-grounded AI systems for stress assessment and intervention planning.
+The research paper prepared as part of the proposed project work is attached along with the plagiarism report in the appendix/end of the report document for reference and review.
 
 %% =====================================================
 
