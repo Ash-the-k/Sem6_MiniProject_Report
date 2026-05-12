@@ -16,6 +16,27 @@
 \usepackage{hyperref}
 \usepackage{etoolbox}
 
+%% ================= LISTINGS =================
+\usepackage{xcolor}
+\usepackage{listings}
+
+%% ================= SAMPLE CODE STYLES =================
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=8pt,
+    frame=single,
+    breaklines=true,
+    breakatwhitespace=false,
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false,
+    tabsize=4
+}
+
 %% ================= HYPERREF =================
 \hypersetup{
     colorlinks=true,
@@ -704,11 +725,12 @@ The architecture represented in Figure~\ref{fig:detailed_arch_3} illustrates ret
 
 %% =====================================================
 \chapter{Sample Code}
+
 \section{Stress RAG System Implementation}
+
 The following code snippet shows the implementation of the Retrieval-Augmented Generation based stress knowledge retrieval system used in the proposed project.
 
-\begin{verbatim}
-
+\begin{lstlisting}[style=pythonstyle, caption={Stress RAG System Implementation}, label={code:stress-rag}]
 import os
 import json
 import re
@@ -765,7 +787,6 @@ if __name__ == "__main__":
         print(f"{i + 1}. {doc[:200]}...")
         print("---")
 \end{lstlisting}
-\end{verbatim}
 
 %% =====================================================
 \chapter{Project Demo Screenshots}
