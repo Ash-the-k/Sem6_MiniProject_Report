@@ -1,17 +1,42 @@
 \documentclass[12pt,a4paper]{report}
 
-%% ================= PACKAGES =================
+%% ================= PAGE LAYOUT & FONTS =================
 \usepackage[margin=1in]{geometry}
 \usepackage{newtxtext,newtxmath}
 \usepackage{setspace}
-\usepackage{titlesec}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{caption}
+\usepackage{ragged2e}
+
+%% ================= TABLES =================
 \usepackage{tabularx}
 \usepackage{array}
+
+%% ================= FIGURES & CAPTIONS =================
+\usepackage{graphicx}
+\usepackage{caption}
 \usepackage{float}
-\usepackage{ragged2e}
+
+%% ================= HEADINGS & HEADER/FOOTER =================
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+
+%% ================= CODE LISTINGS =================
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    breakatwhitespace=true,
+    columns=fullflexible,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    tabsize=4,
+    showstringspaces=false
+}
+
+%% ================= URLS & HYPERLINKS =================
 \usepackage{xurl}
 \usepackage{hyperref}
 \usepackage{etoolbox}
@@ -37,7 +62,6 @@
     tabsize=4
 }
 
-%% ================= HYPERREF =================
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -52,6 +76,8 @@
 Explainable Multimodal Brain -- Heart Stress Detection and\\
 AI-Driven Intervention System using EEG and ECG Signals
 }
+
+\newcommand{\HeaderTitle}{Explainable Multimodal Stress Detection System}
 
 \newcommand{\AcademicYear}{2025--2026}
 
@@ -89,7 +115,6 @@ AI-Driven Intervention System using EEG and ECG Signals
 %% ================= SPACING =================
 
 \onehalfspacing
-\renewcommand{\baselinestretch}{1.1}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
@@ -118,7 +143,7 @@ AI-Driven Intervention System using EEG and ECG Signals
 
 \fancypagestyle{mainstyle}{
   \fancyhf{}
-  \lhead{\small\textbf{\ProjectTitle}}
+  \lhead{\small\textbf{\HeaderTitle}}
   \rhead{\small\textbf{\AcademicYear}}
   \lfoot{\small \DepartmentName}
   \rfoot{\small Page \thepage}
@@ -129,7 +154,7 @@ AI-Driven Intervention System using EEG and ECG Signals
 
 \fancypagestyle{plain}{
   \fancyhf{}
-  \lhead{\small\textbf{\ProjectTitle}}
+  \lhead{\small\textbf{\HeaderTitle}}
   \rhead{\small\textbf{\AcademicYear}}
   \lfoot{\small \DepartmentName}
   \rfoot{\small Page \thepage}
@@ -726,7 +751,9 @@ The architecture represented in Figure~\ref{fig:detailed_arch_3} illustrates ret
 %% =====================================================
 \chapter{Sample Code}
 
+
 \section{Stress RAG System Implementation}
+
 
 The following code snippet shows the implementation of the Retrieval-Augmented Generation based stress knowledge retrieval system used in the proposed project.
 
@@ -739,15 +766,21 @@ from typing import Any, Dict, List, Optional, Sequence
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-LIST_METADATA_KEYS = ("applicable_conditions", "stress_level_mapping", "steps_to_perform")
+LIST_METADATA_KEYS = (
+    "applicable_conditions",
+    "stress_level_mapping",
+    "steps_to_perform"
+)
 
 
 def _chroma_safe_metadata(meta: Dict[str, Any]) -> Dict[str, Any]:
     """Chroma metadata values must be str, int, float, or bool."""
     out: Dict[str, Any] = {}
+
     for k, v in meta.items():
         if v is None:
             continue
+
         if k in LIST_METADATA_KEYS and isinstance(v, (list, tuple)):
             out[k] = json.dumps(list(v))
         elif isinstance(v, (list, tuple, dict)):
@@ -756,23 +789,32 @@ def _chroma_safe_metadata(meta: Dict[str, Any]) -> Dict[str, Any]:
             out[k] = v
         else:
             out[k] = str(v)
+
     return out
 
 
 class StressRAGSystem:
-    def __init__(self, json_file="stress_knowledge_base.json", collection_name="stress_kb"):
+    def __init__(
+        self,
+        json_file="stress_knowledge_base.json",
+        collection_name="stress_kb"
+    ):
         self.json_file = json_file
         self.collection_name = collection_name
         self.model = SentenceTransformer("all-MiniLM-L6-v2")
         self.client = chromadb.PersistentClient(path="./chroma_db")
-        self.collection = self.client.get_or_create_collection(name=collection_name)
+        self.collection = self.client.get_or_create_collection(
+            name=collection_name
+        )
 
     def search_similar(self, query, n_results=3):
         query_embedding = self.model.encode(query).tolist()
+
         results = self.collection.query(
             query_embeddings=[query_embedding],
             n_results=n_results,
         )
+
         return results
 
 
@@ -783,6 +825,7 @@ if __name__ == "__main__":
     results = rag.search_similar(query)
 
     print("Search Results:")
+
     for i, doc in enumerate(results["documents"][0]):
         print(f"{i + 1}. {doc[:200]}...")
         print("---")
