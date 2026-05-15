@@ -36,32 +36,10 @@
     showstringspaces=false
 }
 
-%% ================= URLS & HYPERLINKS =================
+%% ================= URLS, HYPERLINKS & PDF ATTACHMENTS =================
 \usepackage{xurl}
 \usepackage{hyperref}
 \usepackage{pdfpages}
-
-%% ================= LISTINGS =================
-\usepackage{xcolor}
-\usepackage{listings}
-
-
-%% ================= SAMPLE CODE STYLES =================
-\lstdefinestyle{pythonstyle}{
-    language=Python,
-    basicstyle=\ttfamily\small,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=8pt,
-    frame=single,
-    breaklines=true,
-    breakatwhitespace=false,
-    columns=fullflexible,
-    keepspaces=true,
-    showstringspaces=false,
-    tabsize=4
-}
 
 \hypersetup{
     colorlinks=true,
@@ -329,6 +307,9 @@ Signature of HOD
 %% =====================================================
 
 \clearpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\pagestyle{mainstyle}
 
 \chapter*{ACKNOWLEDGEMENT}
 
@@ -361,14 +342,13 @@ We extend our sincere thanks to our family members and our beloved friends, who 
 \clearpage
 
 \begingroup
-
 \setstretch{1.0}
 \setlength{\parskip}{0pt}
 
-\pagenumbering{roman}
+\pagestyle{mainstyle}
+\thispagestyle{mainstyle}
 
 \renewcommand{\contentsname}{CONTENTS}
-
 \tableofcontents
 
 \endgroup
@@ -382,7 +362,7 @@ We extend our sincere thanks to our family members and our beloved friends, who 
 %% =====================================================
 
 \pagenumbering{arabic}
-
+\setcounter{page}{1}
 \pagestyle{mainstyle}
 
 
@@ -588,7 +568,7 @@ The architecture represented in Figure~\ref{fig:detailed_arch_3} illustrates ret
 
 \section{Timeline using Gantt Chart}
 
-Figure 7.1 illustrates the project timeline and development phases of the proposed Explainable Multimodal Brain--Heart Stress Detection and AI-Driven Intervention System. The Gantt chart represents the sequential execution of major project activities carried out during the development lifecycle.
+Figure~\ref{fig:gantt_chart} illustrates the project timeline and development phases of the proposed Explainable Multimodal Brain--Heart Stress Detection and AI-Driven Intervention System. The Gantt chart represents the sequential execution of major project activities carried out during the development lifecycle.
 
 The project began with an extensive literature review and dataset study phase, where relevant research papers, multimodal stress detection techniques, EEG and ECG datasets, and Explainable AI concepts were analyzed. This phase provided the theoretical foundation required for the proposed system.
 
@@ -642,13 +622,11 @@ The Gantt chart demonstrates the systematic progression of the project from rese
 %% =====================================================
 \chapter{Sample Code}
 
-
 \section{Stress RAG System Implementation}
-
 
 The following code snippet shows the implementation of the Retrieval-Augmented Generation based stress knowledge retrieval system used in the proposed project.
 
-\begin{lstlisting}[style=pythonstyle, caption={Stress RAG System Implementation}, label={code:stress-rag}]
+\begin{lstlisting}[language=Python, caption={Stress RAG System Implementation}, label={code:stress-rag}]
 import os
 import json
 import re
@@ -934,6 +912,7 @@ The complete research paper along with the plagiarism and AI detection reports i
 
 \bibliography{references}
 
+\clearpage
 \appendix
 
 \pagestyle{mainstyle}
