@@ -39,11 +39,12 @@
 %% ================= URLS & HYPERLINKS =================
 \usepackage{xurl}
 \usepackage{hyperref}
-\usepackage{etoolbox}
+\usepackage{pdfpages}
 
 %% ================= LISTINGS =================
 \usepackage{xcolor}
 \usepackage{listings}
+
 
 %% ================= SAMPLE CODE STYLES =================
 \lstdefinestyle{pythonstyle}{
@@ -820,7 +821,7 @@ These tools acted as intelligent assistants that supported the development proce
 
 \chapter{SGDs Met by Project with Proper Justification}
 
-\section{The SDGs met by the Proposed System}
+\chapter{SDGs Met by Project with Proper Justification}
 
 The proposed system aligns with the following Sustainable Development Goals (SDGs):
 
@@ -905,19 +906,25 @@ The proposed framework can be further extended through:
 The work also has scope for future research publication and potential development into advanced healthcare support systems.
 
 %% =====================================================
-\chapter{Research Paper Draft}
+\chapter{Research Paper and Plagiarism Report}
 
-\section{Research Paper Title}
+\section{Research Paper Details}
 
-\textbf{An Explainable Multimodal Transformer Framework for EEG--ECG-Based Stress Detection with RAG-Enabled Personalized Intervention}
+As part of the project work, a research paper titled 
+\textbf{``An Explainable Multimodal Transformer Framework for EEG--ECG-Based Stress Detection with RAG-Enabled Personalized Intervention''}
+has been prepared.
 
-\section{Abstract}
+The paper presents the proposed explainable multimodal framework for stress detection using EEG and ECG physiological signals. It includes the literature review, proposed system, methodology, explainability module, RAG-based intervention planning, results, and conclusion.
 
-Stress is a prevalent issue worldwide which impacts one’s psychological and physical health. Recent developments have been made in the detection of stress through wearables which measure physiological signals such as Electroencephalography (EEG), Electrocardiogram (ECG), Electrodermal Activity (EDA), Galvanic Skin Response (GSR), and Photoplethysmography (PPG). Machine learning models utilized for prediction include Logistic Regression, KNN, Random Forest, Support Vector Machines (SVM), XGBoost, and Neural Networks. In order to provide an explanation and make the predictions more understandable, Explainable Artificial Intelligence (XAI) methods like SHAP, LIME, and attention mechanisms are utilized.
+\section{Plagiarism and AI Detection Report}
 
-\section{Research Paper and Plagiarism Report}
+The research paper was checked using Turnitin for plagiarism and AI writing detection. The plagiarism report and AI detection report are attached at the end of this report in the Appendix section.
 
-The research paper prepared as part of the proposed project work is attached along with the plagiarism report in the appendix/end of the report document for reference and review.
+The report shows a low similarity index and confirms that the submitted research paper satisfies the originality requirements for review.
+
+\section{Appendix Reference}
+
+The complete research paper along with the plagiarism and AI detection reports is attached in the Appendix section for verification and review.
 
 %% =====================================================
 
@@ -928,6 +935,32 @@ The research paper prepared as part of the proposed project work is attached alo
 \bibliographystyle{unsrt}
 
 \bibliography{references}
+
+\appendix
+
+\pagestyle{mainstyle}
+
+\chapter{Research Paper, Plagiarism and AI Detection Reports}
+
+This appendix contains the research paper, Turnitin similarity report, and AI detection report attached for verification and review.
+
+\section{Turnitin Similarity Report}
+
+The Turnitin similarity report begins from the next page.
+
+\includepdf[
+    pages=-,
+    pagecommand={\thispagestyle{mainstyle}}
+]{appendix/Stress Detection using ECG-EEG Plagiarism.pdf}
+
+\section{Turnitin AI Detection Report}
+
+The Turnitin AI detection report begins from the next page.
+
+\includepdf[
+    pages=-,
+    pagecommand={\thispagestyle{mainstyle}}
+]{appendix/Stress Detection using ECG-EEG AI Detection.pdf}
 
 %% =====================================================
 
